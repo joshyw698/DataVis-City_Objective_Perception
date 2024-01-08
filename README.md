@@ -26,4 +26,4 @@ Included in the project is a comprehensive correlation analysis of computer visi
 3. Open the `index.html` file in a web browser to view the project.
 
 ## Check the live website directly
--In short, you can directly check my live website without going through this repo here: 
+-In short, you can directly check my live website without going through this repo here: https://joshyw698.github.io/DataVis-City_Objective_Perception/
