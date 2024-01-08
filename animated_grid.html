@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>blank</title>
+		<script type="text/javascript" src="../d3.js"></script>
+		<style>
+			/*your css here*/
+		</style>
+	</head>
+	
+	<body>
+		<div id="someContent">I am a blank page to be used as a template</div>
+
+		<script type="text/javascript">
+			
+			for(var pi =0; pi<300; pi++){
+				var gridDiv = d3.select("body").append("div").style("width","150px").style("height","100px")
+				.style('background-color',"blue")
+				.style("margin","2px")
+				.style("display","inline-block")
+				
+				gridDiv.append("img")
+				.attr("src","data/gif1.gif" )
+				.style("width","150px")
+				.style("height","100px")
+				
+			}
+			
+		</script>
+	</body>
+</html>

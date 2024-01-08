@@ -1,0 +1,304 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* 设置 .gif-container 使用 Grid 布局 */
+.gif-container {
+	position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* 创建足够多的列，每列至少 160px 宽 */
+	grid-auto-rows: 100px;
+    grid-gap: 2px; /* 设置网格间隙 */
+    width: 100%;
+    height: 100vh; /* 确保容器填满整个视窗高度 */
+}
+
+
+.text-overlay {
+    position: absolute;
+    top: 50%; /* 调整这些值以在页面上居中 */
+    left: 50%;
+	width:80%;
+    transform: translate(-50%, -50%); /* 使用 transform 确保准确居中 */
+    color: white; /* 设置文本颜色为白色 */
+    text-align: center; /* 文本居中对齐 */
+    z-index: 20; /* 保证文本在遮罩层之上 */
+}
+
+/* 标题样式 */
+.title-text {
+    font-size: 4em; /* 大标题字号 */
+    font-weight: bold; /* 字体加粗 */
+    margin: 0.5em 0; /* 添加一些上下边距 */
+}
+
+/* 副标题样式 */
+.subtitle-text {
+    font-size: 2.4em; /* 副标题字号 */
+    margin: 0.5em 0; /* 添加一些上下边距 */
+}
+
+.description-text {
+    font-size: 1.6em; /* 副标题字号 */
+    margin: 0.2em 0; /* 添加一些上下边距 */
+}
+
+.name {
+    font-size: 1.1em; /* 副标题字号 */
+    margin: 0.2em 0; /* 添加一些上下边距 */
+}
+
+.description-text + .name {
+    margin-top: 1em 0; /* 增加间距为 32px */
+}
+
+.overlay {
+    position: absolute; /* 绝对定位 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    z-index: 10; /* 确保遮罩层在 GIF 图片之上 */
+}
+
+/* 每个 GIF 的容器样式 */
+.gif-item {
+    width: 100%; /* 使每个项目宽度填满其格子 */
+    height: 100%; /* 根据图片的自然宽高比调整高度 */
+}
+
+/* 图片样式，确保它们填充它们的容器 */
+.gif-item img {
+    width: 100%; /* 使图片宽度填充容器 */
+    height: auto; /* 调整图片高度以保持宽高比 */
+	object-fit: cover;
+}
+
+.section {
+    position: relative; /* 父容器设置为相对定位 */
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    overflow: auto; /* 允许内容滚动 */
+}
+
+.map-container {
+    position: relative; 
+    height: 100vh; 
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    margin: 0.0;
+}
+
+#map2 {
+    width: 100%;
+    height: 100%;
+    margin: 0.0;
+}
+
+.mapboxgl-popup-content h4 {
+    font-weight: 500;
+    font-size: 0.9em;
+    border-width: 0px 0px 0.5px 0px;
+    border-style: solid;
+    border-color: rgb(80, 80, 80);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.mapboxgl-popup-content p {
+    font-weight: 300;
+    margin-top: 0.3em;
+    margin-bottom: 0em;
+}
+
+
+#menu {
+	background: #fff;
+	position: absolute;
+	z-index: 1;
+	bottom: 30px;
+	right: 3em;
+	border-radius: 3px;
+	width: 120px;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	font-family: 'Open Sans', sans-serif;
+}
+#menu a {
+	font-size: 13px;
+	color: #404040;
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding: 10px;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	text-align: center;
+}
+#menu a:last-child {
+	border: none;
+}
+#menu a:hover {
+	background-color: #f8f8f8;
+	color: #000000;
+}
+#menu a.active {
+	background-color: #404040;
+	color: #ffffff;
+}
+#menu a.active:hover {
+	background: #000000;
+}
+
+
+.title {
+	background-color: #fff;
+	opacity: 80%;
+	border-radius: 1em;
+	top: 5em;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	font: .8em/.9em 'Open Sans', sans-serif;
+	line-height: 2.5em;
+	padding: 1em 2em 0em;
+	position: absolute;
+	max-width: 25%;
+	margin: 0em 5em;
+	z-index: 100;
+}
+.title h1{
+	opacity: 100%;
+}
+.title p {
+	line-height: 1.5em;
+	opacity: 100%;
+}
+.title div span {
+	border-radius: 50%;
+	display: inline-block;
+	height: 10px;
+	margin-left: 5px;
+	width: 10px;
+}
+.title hr {
+	border-top: .2em dashed #404040;
+	border-bottom: 0em;
+	margin-top: .75em;
+	margin-bottom: .75em;
+}
+
+
+.legend2 {
+	font: 1em/1.5em 'Open Sans', sans-serif;
+	padding: 1em 1em 1em 1em;
+	position: relative;
+	right: 10px;
+	z-index: 100;
+	opacity: 100%
+  }
+  .legend2 h4 {
+	margin: 0 0 0px;
+	opacity: 100%
+  }
+  .legend2 p {
+	padding-top: 0px;
+	margin-top: 0px;
+  }
+  .legend2 div span {
+	border-radius: 50%;
+	border-style: solid;
+	border-color: black;
+	border-width: 1px;
+	margin: auto;
+	display: inline-block;
+	height: 5px;
+	margin-top: 0px;
+	margin-right: 10px;
+	margin-left: 10px;
+	width: 5px;
+	opacity: 100%
+  }
+
+
+  .legend {
+	font: 1em/1.5em 'Open Sans', sans-serif;
+	padding: 1em 1em 2em 1em;
+	position: relative;
+	right: 10px;
+	z-index: 100;
+	opacity: 100%;
+  }
+  .legend h4 {
+	margin: 0 0 10px;
+	opacity: 100%
+  }
+  .legend div span {
+	border-radius: 0%;
+	display: inline-block;
+	height: 10px;
+	margin-top: 0px;
+	margin-right: 20px;
+	width: 10px;
+  }
+
+  /* 第二个菜单的样式 */
+#menu2 {
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    bottom: 30px;
+    right: 3em;
+    border-radius: 3px;
+    width: 120px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* 这些样式将应用于两个菜单中的链接 */
+#menu a, #menu2 a {
+    font-size: 13px;
+    color: #404040;
+    display: block;
+    margin: 0;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+/* 鼠标悬停和激活状态的样式也应用于两个菜单中的链接 */
+#menu a:hover, #menu2 a:hover {
+    background-color: #f8f8f8;
+    color: #000000;
+}
+#menu a.active, #menu2 a.active {
+    background-color: #404040;
+    color: #ffffff;
+}
+#menu a.active:hover, #menu2 a.active:hover {
+    background: #000000;
+}
+
+
+.gradient-legend-bar {
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to right, green, blue);
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+.correlation-analysis h2 {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.correlation-analysis img {
+    width: 75%;
+    
+}

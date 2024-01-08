@@ -1,0 +1,125 @@
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Yilin Wang_Data Visualization and Analysis of Street View Imagery in Relation to Income Equity in Manhattan </title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script type="text/javascript" src="d3.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="gif-container">
+        <div class="overlay"></div>
+        <div class="text-overlay">
+            <h1 class="title-text">CITY Objective Perception</h1>
+            <p class="subtitle-text">Data Visualization and Analysis of Street View Imagery in Relation to Income Equity in Manhattan</p>
+            
+            <p class="description-text">The first step of this project is to extract about 17,000 points along NYC street centerlines,
+                and then to download these points' Street View Image(SVI) utilizing Google Static Street View API based on their location
+                coordinates.
+            </p>
+            <p class="description-text">
+                The second step is to utilize advanced Computer Vision algorithm(PSPNet) to make semantic segmentation for each street view image.
+                This is to segment different categories in each image and give each category(tree, sky, car, building etc) a specific color.
+            </p>
+            <p class="description-text">
+                The third step is to use python to calculate the final result of each category's ratio in each segmented image and join all 
+                those attributes to original street points with their longitude and latitude for further data visualization.
+
+            </p>
+            <hr>
+            <p class="name">
+                Individual Work by Yilin Wang
+
+            </p>
+            
+        </div>
+
+	<script type="text/javascript">
+			
+        var totalGifs = 17; // 假设有 30 个不同的 GIF 文件
+        var totalPositions = 150; // 总共要放置 120 个位置
+
+        d3.select(".gif-container").selectAll(".gif-item")
+        .data(d3.range(totalPositions)) // 为每个位置创建一个数据点
+        .enter().append("div")
+        .attr("class", "gif-item")
+        .append("img")
+        .attr("src", function(d) {
+            var gifNumber = (d % totalGifs) + 1; // 计算每个位置应该显示哪个 GIF
+            return "gif/" + gifNumber + ".gif"; // 构造 GIF 文件路径
+        });
+			
+	</script>
+        
+    </div>
+
+    <div id="section1" class="section">
+        <div id='map'></div>
+        <nav id="menu"></nav>
+        <div id='title' class="title">
+            <h1>Explore Relation Between Objective Perception of Street View Image and Income Equity in Manhattan</h1>
+            <p>After constructing the complete dataset, I imported the geojson file of 17000 street points with attributes
+                of each categoty's ratio from segmentation into mapbox to make data visualization. To be specific, I choose
+                green-view ratio and sky-view ratio for visualization. I extruded each circle based on their attributes on
+                these two ratios, and made color gradients for each extrusion.
+            </p>
+            <p>Then I visualized NYC median house income per block and made blue-color gradient as a basemap to compare with
+                street view image objective perception.
+            </p>
+            <hr>
+            <div id="greenview_ratio" class="legend2">
+                <h4>Greenview Ratio of Each SVI</h4>
+                <p><em>Click on each SVI for exact number of greenview ratio</em></p>
+                <div><span style="background-color: #fafa6e"></span>&#8594;<span style="background-color: #ffc058; height:20px; width:20px"></span>&#8594;
+                    <span style="background-color: #582a56; height:30px; width:30px"></span> 0 to 1</div>
+            </div>
+            <div id="skyview_ratio" class="legend2">
+                <h4>Skyview Ratio of Each SVI</h4>
+                <p><em>Click on each SVI for exact number of skyview ratio</em></p>
+                <div><span style="background-color: #FCF697"></span>&#8594;<span style="background-color: #f08a5b; height:20px; width:20px"></span>&#8594;
+                    <span style="background-color: #953f62; height:30px; width:30px"></span> 0 to 1</div>
+            </div>
+            <div id="income-legend" class="legend">
+                <h4>Median Household Income per Block</h4>
+                <div><span style="background-color: #00a2ca"></span>$150,000 +</div>
+                <div><span style="background-color: #33b5d5"></span>$100,000 - $150,000</div>
+                <div><span style="background-color: #66c7e0"></span>$75,000 - $100,000</div>
+                <div><span style="background-color: #99daea"></span>$50,000 - $75,000</div>
+                <div><span style="background-color: #ccedf5"></span>$20,000 - $50,000</div>
+                <div><span style="background-color: #ffffff"></span>Less than $20,000</div>
+            </div>
+        </div>
+    </div>
+    <div id="section2" class="section">
+        <nav id="menu2"></nav>
+        <div id='map2'></div>
+        <div id='title' class="title">
+            <h1>Explore Relation Between Objective Perception of Street View Image and Income Equity in Manhattan</h1>
+            <p>In this page, the visualization further illustrates the correlation between green view, sky view, and median income across 
+                different blocks in New York City. Using a heatmap approach, it highlights street view images with green-view ratio 
+                and sky visibility and correlates these visual factors with the economic demographics of each area.
+            </p>
+            <p>The intensity and gradient of colors represent the varying ratios, with green indicating green view and 
+                blue indicating sky view. As the color intensifies, it signifies a higher ratio, providing a clear 
+                visual cue to identify areas with more abundant greenery and sky-view elements.
+            </p>
+            <hr>
+            <div id="gradient-legend" class="legend">
+                <h4>Color Gradient Legend</h4>
+                <div class="gradient-legend-bar"></div>
+                <label>Low Ratio</label><label>High Ratio</label>
+            </div>
+            <div id="correlation-analysis" class="correlation-analysis">
+                <h2>Correlation Analysis of several Metrics of street view image derived from computer vision </h2>
+                <img src="data/correlation analysis.png" alt="Correlation Analysis">
+            </div>
+        </div>
+        <script type='text/javascript' src="map.js"></script>
+    </div>
+    
+</body>
+
+</html>
