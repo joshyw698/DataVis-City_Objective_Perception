@@ -24,3 +24,6 @@ Included in the project is a comprehensive correlation analysis of computer visi
 1. Clone the repository to your local machine.
 2. Using command prompt to turn on localhost to read through repository since the html has javascript codes.
 3. Open the `index.html` file in a web browser to view the project.
+
+## Check the live website directly
+-In short, you can directly check my live website without going through this repo here: 
